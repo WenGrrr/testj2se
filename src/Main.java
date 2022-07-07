@@ -1,5 +1,6 @@
 import factory.CelsiusFactory;
 import factory.TempFactory;
+import library.InfoType;
 import library.Library;
 import library.LibraryGenerics;
 import library.Product;
@@ -18,10 +19,15 @@ public class Main {
 
     //task 3
         Library library = new Library(5);
-        for (int i = 0; i < library.getProduct().length; i++) {
-            System.out.println(library.getProduct()[i].getName());
-            System.out.println(library.getProduct()[i].getType());
+        for (int i = 0; i < library.getProducts().length; i++) {
+            System.out.println(library.getProducts()[i].getName());
+            System.out.println(library.getProducts()[i].getType());
         }
+        Product product = new Product("Stalker", InfoType.newspapers);
+        Library libraryTwo = new Library(product);
+        LibraryGenerics libraryGenericsTwo = new LibraryGenerics(product);
+        System.out.println(libraryTwo.getProducts()[0].getName());
+        System.out.println(libraryGenericsTwo.getProducts().get(0).getType());
 
         LibraryGenerics libraryGenerics = new LibraryGenerics(5);
         for (int i = 0; i < libraryGenerics.getProducts().size() ; i++) {

@@ -7,6 +7,16 @@ import java.util.List;
 public class LibraryGenerics {
     List<Product> products;
 
+    public LibraryGenerics(Product product) {
+        if(products != null){
+            this.products.add(product);
+        }
+        else{
+            products = new ArrayList<Product>();
+            products.add(product);
+        }
+    }
+
     public LibraryGenerics(int n) {
         products = new ArrayList<Product>();
 

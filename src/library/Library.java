@@ -1,9 +1,19 @@
 package library;
 
-import java.util.List;
-
 public class Library {
     Product[] products;
+    Product[] buf;
+    public Library(Product product) {
+    if(products != null){
+        for (int i = 0; i < products.length; i++) {
+            buf[i] = products[i];
+        }
+         buf[products.length + 1] = product;
+        this.products = buf;
+        }
+        this.products = new Product[]{product};
+    }
+
 
     public Library(int n) {
         products = new Product[n];
@@ -14,12 +24,12 @@ public class Library {
 
 
 
-    public Product[] getProduct() {
+    public Product[] getProducts() {
         return products;
     }
 
-    public void setProduct(Product[] product) {
-        this.products = product;
+    public void setProducts(Product[] products) {
+        this.products = products;
     }
 
 
