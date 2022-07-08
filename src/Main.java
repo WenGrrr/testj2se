@@ -1,39 +1,30 @@
-import factory.CelsiusFactory;
-import factory.TempFactory;
-import library.InfoType;
-import library.Library;
-import library.LibraryGenerics;
-import library.Product;
-
-import static temptypes.TempType.Kelvin;
+import library.*;
 
 public class Main {
     public static void main(String[] Args){
     //task 1
-        //JSONPars jp = new JSONPars();
-        //jp.getYoungGuid();
+        JSONPars jp = new JSONPars();
+        var obj = jp.getJSON();
+        var iterator = jp.arrayJSONIteration(obj);
+        var people = jp.mapper(iterator);
+        System.out.println(jp.getAgesGuid(people,20,30));
+        for (int i = 0; i < people.size(); i++) {
+            System.out.println(people.get(i).getName());
+        }
 
     //task 2
        // TempFactory tempFactory = new CelsiusFactory();
        // System.out.println(tempFactory.convert(Kelvin,333));
+        //task 3
 
-    //task 3
-        Library library = new Library(5);
-        for (int i = 0; i < library.getProducts().length; i++) {
-            System.out.println(library.getProducts()[i].getName());
-            System.out.println(library.getProducts()[i].getType());
-        }
-        Product product = new Product("Stalker", InfoType.newspapers);
-        Library libraryTwo = new Library(product);
-        LibraryGenerics libraryGenericsTwo = new LibraryGenerics(product);
-        System.out.println(libraryTwo.getProducts()[0].getName());
-        System.out.println(libraryGenericsTwo.getProducts().get(0).getType());
+//        Product g = new Book("История Тестов","Тестус Тест Тестович");
+//        Library library = new Library(5);
+//        LibraryInterface lit = new LibraryGenerics<Product>(1, g);
+//        for (int i = 0; i < lit.getSize(); i++) {
+//            System.out.println(lit.getProducts()[i].getName());
+//        }
 
-        LibraryGenerics libraryGenerics = new LibraryGenerics(5);
-        for (int i = 0; i < libraryGenerics.getProducts().size() ; i++) {
-            System.out.println(libraryGenerics.getProducts().get(i).getName());
-            System.out.println(libraryGenerics.getProducts().get(i).getType());
-        }
+
 
 
     }

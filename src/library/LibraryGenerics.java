@@ -1,39 +1,46 @@
 package library;
 
-import java.util.AbstractList;
-import java.util.ArrayList;
-import java.util.List;
+public class LibraryGenerics<T> implements LibraryInterface{
 
-public class LibraryGenerics {
-    List<Product> products;
+    private T typeProduct;
+    private Product[] products;
+    private Product[] buf;
 
-    public LibraryGenerics(Product product) {
-        if(products != null){
-            this.products.add(product);
-        }
-        else{
-            products = new ArrayList<Product>();
-            products.add(product);
+    public LibraryGenerics(int n, T typeProduct) {
+        this.typeProduct = typeProduct;
+        products = new Product[n];
+        for (int i = 0; i < n; i++) {
+            products[i] = (Product) typeProduct;
         }
     }
 
-    public LibraryGenerics(int n) {
-        products = new ArrayList<Product>();
-
-        for (int i = 1; i < n; i++) {
-            products.add(new Product("Ведьмак "+i, InfoType.videos));
-        }
-    }
-
-    public List<Product> getProducts() {
+    @Override
+    public Product[] getProducts() {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
+    @Override
+    public Product getProduct(int index) {
+        return products[index];
+    }
+
+    @Override
+    public void setProduct(Product product) {
+        buf = new Product[products.length+1];
+        for (int i = 0; i < products.length; i++) {
+            buf[i] = products[i];
+        }
+        buf[products.length+1]=product;
+        products = buf;
+    }
+
+    @Override
+    public void setProducts(Product[] product) {
         this.products = products;
     }
 
-
-
-
+    @Override
+    public int getSize() {
+        return this.products.length;
+    }
 }

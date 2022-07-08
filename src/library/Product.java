@@ -1,27 +1,18 @@
 package library;
 
-public class Product {
+public abstract class Product implements Products {
     String name;
-    InfoType type;
+    String author;
 
-    public Product(String _name, InfoType _type) {
-        this.setName(_name);
-        this.setType(_type);
-    }
+    @Override
+    public abstract String getName();
 
-    public String getName() {
-        return name;
-    }
+    @Override
+    public abstract void setName(String name);
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    @Override
+    public abstract String getAuthor();
 
-    public InfoType getType() {
-        return type;
-    }
-
-    public void setType(InfoType type) {
-        this.type = type;
-    }
+    @Override
+    public abstract void setAuthor(String author);
 }
